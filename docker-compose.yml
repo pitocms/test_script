@@ -1,0 +1,17 @@
+networks:
+  test-script-network:
+    driver: bridge
+    name: test-script-network
+services:
+  test-script-app:
+    build: .
+    container_name: test-script-app
+    image: test-script-app
+    networks:
+      - test-script-network
+    ports:
+      - 8001:80
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+version: '3.9'
